@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { StatusChip } from "@/components/ui/status-chip";
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface CrmLayoutProps {
   children: React.ReactNode;
@@ -29,7 +30,7 @@ export function CrmLayout({ children }: CrmLayoutProps) {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
+      <div className="min-h-screen flex w-full bg-background">
         <AppSidebar />
         <SidebarInset className="flex-1">
           {/* Top Header Bar */}
@@ -53,6 +54,8 @@ export function CrmLayout({ children }: CrmLayoutProps) {
                       {currentAgent.name}
                     </span>
                   </div>
+                  
+                  <ThemeToggle />
                   
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                     <LogOut className="h-4 w-4" />

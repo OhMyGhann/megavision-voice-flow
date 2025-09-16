@@ -94,41 +94,56 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Background & Surfaces - Dark variants */
+    --background: 220 26% 14%;           /* #111827 - Dark background */
+    --foreground: 0 0% 98%;              /* #F9FAFB - Light text */
+    --card: 215 25% 18%;                 /* Slightly lighter than bg */
+    --card-foreground: 0 0% 98%;
+    --popover: 215 25% 18%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Keep Megavision primary colors consistent */
+    --primary: 45 100% 41%;              /* Keep Megavision Yellow */
+    --primary-foreground: 220 26% 14%;   /* Dark text on yellow */
+    
+    /* Gray scale - inverted for dark mode */
+    --muted: 215 25% 27%;                /* #374151 - Darker gray */
+    --muted-foreground: 220 9% 64%;      /* #9CA3AF - Lighter gray text */
+    --gray-600: 0 0% 98%;                /* Light text in dark mode */
+    --gray-50: 215 25% 18%;              /* Dark surface */
+    
+    /* Secondary Colors */
+    --secondary: 215 25% 27%;            /* Darker secondary */
+    --secondary-foreground: 0 0% 98%;
+    
+    /* Accent Colors - maintain visibility */
+    --accent-red: 9 81% 65%;             /* Lighter red for dark mode */
+    --accent-blue: 221 83% 63%;          /* Lighter blue for dark mode */
+    --accent: 215 25% 27%;
+    --accent-foreground: 0 0% 98%;
+    
+    /* Status Colors - adjusted for dark mode */
+    --success: 142 76% 46%;              /* Lighter green */
+    --success-foreground: 220 26% 14%;
+    --warning: 38 92% 60%;               /* Lighter orange */
+    --warning-foreground: 220 26% 14%;
+    --destructive: 9 81% 65%;            /* Lighter red */
+    --destructive-foreground: 220 26% 14%;
+    
+    /* Borders & Inputs */
+    --border: 215 25% 27%;               /* Dark border */
+    --input: 215 25% 27%;
+    --ring: 45 100% 41%;                 /* Keep primary for focus */
+    
+    /* Sidebar - Dark theme */
+    --sidebar-background: 220 26% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 45 100% 41%;      /* Megavision Yellow */
+    --sidebar-primary-foreground: 220 26% 14%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 45 100% 41%;
   }
 }
 
@@ -168,25 +183,25 @@
 }
 
 @layer components {
-  /* Status Badge Variants */
+  /* Status Badge Variants - Dark mode compatible */
   .status-available {
-    @apply bg-green-100 text-green-800 border-green-200;
+    @apply bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800;
   }
   
   .status-on-call {
-    @apply bg-primary/10 text-primary-foreground border-primary/20;
+    @apply bg-primary/10 text-primary-foreground border-primary/20 dark:bg-primary/20 dark:text-primary dark:border-primary/30;
   }
   
   .status-acw {
-    @apply bg-amber-100 text-amber-800 border-amber-200;
+    @apply bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800;
   }
   
   .status-break {
-    @apply bg-gray-100 text-gray-700 border-gray-200;
+    @apply bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700;
   }
   
   .status-offline {
-    @apply bg-red-100 text-red-800 border-red-200;
+    @apply bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800;
   }
   
   /* CRM Card Variants */
@@ -198,24 +213,24 @@
     @apply bg-card border border-border rounded-lg shadow-sm;
   }
   
-  /* Number Health Score Colors */
+  /* Number Health Score Colors - Dark mode compatible */
   .health-excellent {
-    @apply bg-green-100 text-green-800;
+    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
   }
   
   .health-good {
-    @apply bg-blue-100 text-blue-800;
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
   }
   
   .health-fair {
-    @apply bg-yellow-100 text-yellow-800;
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
   }
   
   .health-poor {
-    @apply bg-orange-100 text-orange-800;
+    @apply bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400;
   }
   
   .health-critical {
-    @apply bg-red-100 text-red-800;
+    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
   }
 }
