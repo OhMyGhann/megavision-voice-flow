@@ -62,7 +62,7 @@ const mockNumbersPool = [
 
 export default function NumbersPool() {
   const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
   const { toast } = useToast();
 
   const getStatusColor = (status: string) => {
@@ -133,7 +133,7 @@ export default function NumbersPool() {
   };
 
   const filteredNumbers = mockNumbersPool.filter(number => {
-    return !statusFilter || number.status === statusFilter;
+    return !statusFilter || statusFilter === "all" || number.status === statusFilter;
   });
 
   return (
@@ -217,7 +217,7 @@ export default function NumbersPool() {
                   <SelectValue placeholder="Semua Status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Status</SelectItem>
+                  <SelectItem value="all">Semua Status</SelectItem>
                   <SelectItem value="Active">Active</SelectItem>
                   <SelectItem value="Paused">Paused</SelectItem>
                   <SelectItem value="Critical">Critical</SelectItem>
