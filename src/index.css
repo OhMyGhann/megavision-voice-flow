@@ -1,42 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Megavision CRM Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    /* Megavision Primary Colors */
+    --primary: 45 100% 41%;          /* #FFC20E - Megavision Yellow */
+    --primary-foreground: 220 26% 14%; /* #111827 - Dark Text */
+    --primary-600: 45 100% 44%;       /* #E0B500 - Primary 600 */
+    --primary-50: 45 100% 94%;        /* #FFF8E1 - Primary 50 */
+    
+    /* Background & Surfaces */
+    --background: 0 0% 100%;          /* White */
+    --foreground: 220 26% 14%;        /* #111827 - Dark Text */
+    --card: 0 0% 100%;               
+    --card-foreground: 220 26% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 220 26% 14%;
+    
+    /* Gray Scale */
+    --muted: 220 13% 91%;            /* #E5E7EB */
+    --muted-foreground: 215 16% 47%; /* #6B7280 */
+    --gray-600: 215 25% 27%;         /* #374151 */
+    --gray-50: 220 14% 96%;          /* #F9FAFB */
+    
+    /* Secondary Colors */
+    --secondary: 220 13% 91%;         /* Gray 200 */
+    --secondary-foreground: 220 26% 14%;
+    
+    /* Accent Colors */
+    --accent-red: 9 81% 55%;         /* #E43D30 - Red Accent */
+    --accent-blue: 221 83% 53%;      /* #2563EB - Link/Info */
+    --accent: 220 13% 91%;
+    --accent-foreground: 220 26% 14%;
+    
+    /* Status Colors */
+    --success: 142 76% 36%;          /* Green */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;           /* Orange */
+    --warning-foreground: 0 0% 100%;
+    --destructive: 9 81% 55%;        /* Red */
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 220 13% 91%;           /* #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 45 100% 41%;             /* Primary for focus rings */
+    
+    /* Radius System */
+    --radius-sm: 0.25rem;            /* 4px */
+    --radius-md: 0.5rem;             /* 8px */  
+    --radius-lg: 0.75rem;            /* 12px */
+    --radius: 0.75rem;               /* Default 12px */
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    
+    /* Typography Scale */
+    --font-display: 2rem;            /* 32px */
+    --font-display-height: 2.5rem;   /* 40px */
+    --font-h1: 1.75rem;              /* 28px */
+    --font-h1-height: 2.25rem;       /* 36px */
+    --font-h2: 1.375rem;             /* 22px */
+    --font-h2-height: 1.875rem;      /* 30px */
+    --font-h3: 1.125rem;             /* 18px */
+    --font-h3-height: 1.75rem;       /* 28px */
+    --font-body: 0.875rem;           /* 14px */
+    --font-body-height: 1.375rem;    /* 22px */
+    --font-caption: 0.75rem;         /* 12px */
+    --font-caption-height: 1.125rem; /* 18px */
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +138,84 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  /* Typography System */
+  .text-display {
+    @apply text-[2rem] leading-[2.5rem] font-bold;
+  }
+  
+  .text-h1 {
+    @apply text-[1.75rem] leading-[2.25rem] font-bold;
+  }
+  
+  .text-h2 {
+    @apply text-[1.375rem] leading-[1.875rem] font-semibold;
+  }
+  
+  .text-h3 {
+    @apply text-[1.125rem] leading-[1.75rem] font-semibold;
+  }
+  
+  .text-body {
+    @apply text-sm leading-[1.375rem] font-medium;
+  }
+  
+  .text-caption {
+    @apply text-xs leading-[1.125rem] font-medium;
+  }
+}
+
+@layer components {
+  /* Status Badge Variants */
+  .status-available {
+    @apply bg-green-100 text-green-800 border-green-200;
+  }
+  
+  .status-on-call {
+    @apply bg-primary/10 text-primary-foreground border-primary/20;
+  }
+  
+  .status-acw {
+    @apply bg-amber-100 text-amber-800 border-amber-200;
+  }
+  
+  .status-break {
+    @apply bg-gray-100 text-gray-700 border-gray-200;
+  }
+  
+  .status-offline {
+    @apply bg-red-100 text-red-800 border-red-200;
+  }
+  
+  /* CRM Card Variants */
+  .card-dashboard {
+    @apply bg-card border border-border rounded-xl shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  .card-agent-desktop {
+    @apply bg-card border border-border rounded-lg shadow-sm;
+  }
+  
+  /* Number Health Score Colors */
+  .health-excellent {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .health-good {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .health-fair {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .health-poor {
+    @apply bg-orange-100 text-orange-800;
+  }
+  
+  .health-critical {
+    @apply bg-red-100 text-red-800;
   }
 }
