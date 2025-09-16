@@ -24,55 +24,21 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={
-            <CrmLayout>
-              <AgentDesktop />
-            </CrmLayout>
-          } />
-          <Route path="/agent" element={
-            <CrmLayout>
-              <AgentDesktop />
-            </CrmLayout>
-          } />
-          <Route path="/cdr" element={
-            <CrmLayout>
-              <CDRExplorer />
-            </CrmLayout>
-          } />
-          <Route path="/recordings" element={
-            <CrmLayout>
-              <Recordings />
-            </CrmLayout>
-          } />
-          <Route path="/spv" element={
-            <CrmLayout>
-              <SupervisorWallboard />
-            </CrmLayout>
-          } />
-          <Route path="/numbers-pool" element={
-            <CrmLayout>
-              <NumbersPool />
-            </CrmLayout>
-          } />
-          <Route path="/campaigns" element={
-            <CrmLayout>
-              <Campaigns />
-            </CrmLayout>
-          } />
-          <Route path="/leads/:id" element={
-            <CrmLayout>
-              <LeadDetail />
-            </CrmLayout>
-          } />
-          <Route path="/settings/roles" element={
-            <CrmLayout>
-              <RolesPermissions />
-            </CrmLayout>
-          } />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <CrmLayout>
+          <Routes>
+            <Route path="/" element={<AgentDesktop />} />
+            <Route path="/agent" element={<AgentDesktop />} />
+            <Route path="/cdr" element={<CDRExplorer />} />
+            <Route path="/recordings" element={<Recordings />} />
+            <Route path="/spv" element={<SupervisorWallboard />} />
+            <Route path="/numbers-pool" element={<NumbersPool />} />
+            <Route path="/campaigns" element={<Campaigns />} />
+            <Route path="/leads/:id" element={<LeadDetail />} />
+            <Route path="/settings/roles" element={<RolesPermissions />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CrmLayout>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
