@@ -48,8 +48,8 @@ const mockCDRData = [
 
 export default function CDRExplorer() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedOutcome, setSelectedOutcome] = useState("");
-  const [selectedAgent, setSelectedAgent] = useState("");
+  const [selectedOutcome, setSelectedOutcome] = useState("all");
+  const [selectedAgent, setSelectedAgent] = useState("all");
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -73,8 +73,8 @@ export default function CDRExplorer() {
       call.leadPhone.includes(searchTerm) ||
       call.callerIdUsed.includes(searchTerm);
     
-    const matchesOutcome = !selectedOutcome || call.outcome === selectedOutcome;
-    const matchesAgent = !selectedAgent || call.agent === selectedAgent;
+    const matchesOutcome = !selectedOutcome || selectedOutcome === "all" || call.outcome === selectedOutcome;
+    const matchesAgent = !selectedAgent || selectedAgent === "all" || call.agent === selectedAgent;
     
     return matchesSearch && matchesOutcome && matchesAgent;
   });
@@ -119,7 +119,7 @@ export default function CDRExplorer() {
                   <SelectValue placeholder="Semua Outcome" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Outcome</SelectItem>
+                  <SelectItem value="all">Semua Outcome</SelectItem>
                   <SelectItem value="Interested">Interested</SelectItem>
                   <SelectItem value="Not Interested">Not Interested</SelectItem>
                   <SelectItem value="Callback">Callback</SelectItem>
@@ -135,7 +135,7 @@ export default function CDRExplorer() {
                   <SelectValue placeholder="Semua Agent" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Agent</SelectItem>
+                  <SelectItem value="all">Semua Agent</SelectItem>
                   <SelectItem value="Agent Demo">Agent Demo</SelectItem>
                 </SelectContent>
               </Select>
@@ -146,8 +146,8 @@ export default function CDRExplorer() {
                 variant="outline" 
                 onClick={() => {
                   setSearchTerm("");
-                  setSelectedOutcome("");
-                  setSelectedAgent("");
+                  setSelectedOutcome("all");
+                  setSelectedAgent("all");
                 }}
                 className="w-full"
               >
