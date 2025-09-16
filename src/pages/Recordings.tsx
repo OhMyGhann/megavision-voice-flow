@@ -36,8 +36,8 @@ const mockRecordings = [
 
 export default function Recordings() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedAgent, setSelectedAgent] = useState("");
-  const [selectedSentiment, setSelectedSentiment] = useState("");
+  const [selectedAgent, setSelectedAgent] = useState("all");
+  const [selectedSentiment, setSelectedSentiment] = useState("all");
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -65,8 +65,8 @@ export default function Recordings() {
       recording.leadName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       recording.callId.includes(searchTerm);
     
-    const matchesAgent = !selectedAgent || recording.agent === selectedAgent;
-    const matchesSentiment = !selectedSentiment || recording.sentiment === selectedSentiment;
+    const matchesAgent = !selectedAgent || selectedAgent === "all" || recording.agent === selectedAgent;
+    const matchesSentiment = !selectedSentiment || selectedSentiment === "all" || recording.sentiment === selectedSentiment;
     
     return matchesSearch && matchesAgent && matchesSentiment;
   });
@@ -128,7 +128,7 @@ export default function Recordings() {
                   <SelectValue placeholder="Semua Agent" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Agent</SelectItem>
+                  <SelectItem value="all">Semua Agent</SelectItem>
                   <SelectItem value="Agent Demo">Agent Demo</SelectItem>
                 </SelectContent>
               </Select>
@@ -141,7 +141,7 @@ export default function Recordings() {
                   <SelectValue placeholder="Semua Sentiment" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Sentiment</SelectItem>
+                  <SelectItem value="all">Semua Sentiment</SelectItem>
                   <SelectItem value="Positif">Positif</SelectItem>
                   <SelectItem value="Netral">Netral</SelectItem>
                   <SelectItem value="Negatif">Negatif</SelectItem>
@@ -154,8 +154,8 @@ export default function Recordings() {
                 variant="outline" 
                 onClick={() => {
                   setSearchTerm("");
-                  setSelectedAgent("");
-                  setSelectedSentiment("");
+                  setSelectedAgent("all");
+                  setSelectedSentiment("all");
                 }}
                 className="w-full"
               >
